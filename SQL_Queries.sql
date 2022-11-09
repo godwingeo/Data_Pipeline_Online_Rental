@@ -35,3 +35,22 @@ join address a ON a.address_id = c.address_id
 join city ct ON ct.city_id = a.city_id
 group by ct.city
 order by SUM(p.amount) DESC
+--- Creation of Dimension and FACT tables based on Diagram---
+CREATE TABLE dimDATE
+(
+	date_key integer NOT NULL PRIMARY KEY,
+	date date NOT NULL,
+	year smallint NOT NULL,
+	quarter smallint NOT NULL,
+	month smallint NOT NULL,
+	day smallint NOT NULL,
+	week smallint NOT NULL,
+	is_weekend boolean
+);
+--- This helps to get the details about columns in a table
+select column_name,data_type from information_schema.columns where table_name = 'dimdate'
+
+
+
+
+
